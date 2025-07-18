@@ -23,8 +23,8 @@ export const useNetworkStatus = (): NetworkStatus => {
     isOnline: navigator.onLine,
   });
 
-  useEffect(() => {
-    const updateNetworkStatus = () => {
+  useEffect((): (() => void) => {
+    const updateNetworkStatus = (): void => {
       const connection = (navigator as Navigator & { connection?: NetworkInformation }).connection;
       
       setNetworkStatus({

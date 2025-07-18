@@ -1,5 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+
 import App from './App';
 import ErrorBoundary from './ErrorBoundary';
 import './index.css';
@@ -9,15 +10,23 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then((registration) => {
-        console.log('SW registered: ', registration);
+        // eslint-disable-next-line no-console
+        console.log('SW registered:', registration);
+        return registration;
       })
       .catch((registrationError) => {
-        console.log('SW registration failed: ', registrationError);
+        // eslint-disable-next-line no-console
+        console.log('SW registration failed:', registrationError);
       });
   });
 }
 
-createRoot(document.getElementById('root')!).render(
+const rootElement = document.querySelector('#root');
+if (!rootElement) {
+  throw new Error('Root element not found');
+}
+
+createRoot(rootElement).render(
   <StrictMode>
     <ErrorBoundary>
       <App />

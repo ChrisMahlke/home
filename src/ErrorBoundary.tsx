@@ -22,7 +22,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     return { hasError: true, error };
   }
 
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
     // Store error info for potential analytics service integration
     // In a real app, you'd send this to your error tracking service
     // Example: Sentry.captureException(error, { extra: errorInfo });
@@ -30,20 +30,24 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     // Only log in development for debugging
     const isDevelopment = import.meta.env.DEV;
     if (isDevelopment) {
+      // eslint-disable-next-line no-console
       console.group('🚨 React Error Boundary Caught Error');
+      // eslint-disable-next-line no-console
       console.error('Error:', error);
+      // eslint-disable-next-line no-console
       console.error('Error Info:', errorInfo);
+      // eslint-disable-next-line no-console
       console.groupEnd();
     }
 
     this.setState({ error, errorInfo });
   }
 
-  resetError = () => {
+  resetError = (): void => {
     this.setState({ hasError: false, error: undefined, errorInfo: undefined });
   };
 
-  render() {
+  render(): React.JSX.Element {
     if (this.state.hasError) {
       // Custom fallback component
       if (this.props.fallback) {
@@ -61,7 +65,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
                 Something went wrong
               </h1>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
-                We're sorry, but something unexpected happened. Please try refreshing the page.
+                We&apos;re sorry, but something unexpected happened. Please try refreshing the page.
               </p>
               
               {import.meta.env.DEV && this.state.error && (
@@ -97,7 +101,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
       );
     }
 
-    return this.props.children;
+    return this.props.children as React.JSX.Element;
   }
 }
 

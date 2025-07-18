@@ -1,8 +1,8 @@
+import { ArrowUpRight, Github, Linkedin, Moon, Sun } from 'lucide-react';
 import React from 'react';
-import { Github, Linkedin, ArrowUpRight, Sun, Moon } from 'lucide-react';
 
 // Performance monitoring
-const usePerformanceMonitor = () => {
+const usePerformanceMonitor = (): void => {
   React.useEffect(() => {
     // Track page load performance
     if ('performance' in window) {
@@ -10,7 +10,10 @@ const usePerformanceMonitor = () => {
         for (const entry of list.getEntries()) {
           if (entry.entryType === 'navigation') {
             const navEntry = entry as PerformanceNavigationTiming;
-            console.log('Page load time:', navEntry.loadEventEnd - navEntry.loadEventStart, 'ms');
+            // Performance tracking - in production, send to analytics service
+            const loadTime = navEntry.loadEventEnd - navEntry.loadEventStart;
+            // eslint-disable-next-line no-console
+            console.log('Page load time:', loadTime, 'ms');
           }
         }
       });
@@ -20,28 +23,28 @@ const usePerformanceMonitor = () => {
 };
 
 // Keyboard navigation hook
-const useKeyboardNavigation = (onToggle: () => void) => {
+const useKeyboardNavigation = (onToggle: () => void): void => {
   React.useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
+    const handleKeyPress = (event: KeyboardEvent): void => {
       if (event.key === 'd' && (event.metaKey || event.ctrlKey)) {
         event.preventDefault();
         onToggle();
       }
     };
     window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
+    return (): void => window.removeEventListener('keydown', handleKeyPress);
   }, [onToggle]);
 };
 
 // Accessibility hook for reduced motion
-const useReducedMotion = () => {
+const useReducedMotion = (): boolean => {
   const [prefersReducedMotion, setPrefersReducedMotion] = React.useState(false);
   
-  React.useEffect(() => {
+  React.useEffect((): (() => void) => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReducedMotion(mediaQuery.matches);
     
-    const handleChange = (e: MediaQueryListEvent) => {
+    const handleChange = (e: MediaQueryListEvent): void => {
       setPrefersReducedMotion(e.matches);
     };
     
@@ -52,18 +55,18 @@ const useReducedMotion = () => {
   return prefersReducedMotion;
 };
 
-function App() {
-  const [isDarkMode, setIsDarkMode] = React.useState(() => {
+function App(): React.JSX.Element {
+  const [isDarkMode, setIsDarkMode] = React.useState((): boolean => {
     // Check for saved preference or system preference
     const saved = localStorage.getItem('darkMode');
-    if (saved !== null) return JSON.parse(saved);
+    if (saved !== null) return JSON.parse(saved) as boolean;
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
   
-  const [isLoaded, setIsLoaded] = React.useState(false);
+  const [isLoaded, setIsLoaded] = React.useState<boolean>(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const mainContentRef = React.useRef<HTMLElement>(null);
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion: boolean = useReducedMotion();
 
   // Performance monitoring
   usePerformanceMonitor();
@@ -71,19 +74,20 @@ function App() {
   // Keyboard shortcuts
   useKeyboardNavigation(() => setIsDarkMode(!isDarkMode));
 
-  const toggleDarkMode = () => {
+  const toggleDarkMode = (): void => {
     setIsDarkMode(!isDarkMode);
   };
 
   // Save preference to localStorage
-  React.useEffect(() => {
+  React.useEffect((): void => {
     localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
   }, [isDarkMode]);
 
   // Track analytics
-  React.useEffect(() => {
+  React.useEffect((): void => {
     // Simple analytics tracking
-    const trackEvent = (event: string) => {
+    const trackEvent = (event: string): void => {
+      // eslint-disable-next-line no-console
       console.log(`Analytics: ${event} at ${new Date().toISOString()}`);
       // In a real app, you'd send this to your analytics service
     };
@@ -97,8 +101,9 @@ function App() {
   }, [isDarkMode]);
 
   // Developer console welcome message
-  React.useEffect(() => {
+  React.useEffect((): void => {
     if (import.meta.env.DEV) {
+      // eslint-disable-next-line no-console
       console.log(`
 %c🚀 Welcome to Chris Mahlke's Portfolio!
 %c
@@ -124,7 +129,7 @@ function App() {
   }, []);
 
   // Simulate loading state for better UX
-  React.useEffect(() => {
+  React.useEffect((): (() => void) => {
     const timer = setTimeout(() => setIsLoaded(true), 100);
     return () => clearTimeout(timer);
   }, []);

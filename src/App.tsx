@@ -96,6 +96,33 @@ function App() {
     }
   }, [isDarkMode]);
 
+  // Developer console welcome message
+  React.useEffect(() => {
+    if (import.meta.env.DEV) {
+      console.log(`
+%c🚀 Welcome to Chris Mahlke's Portfolio!
+%c
+%cBuilt with React, TypeScript & Tailwind CSS
+%cFeatures: Dark mode, PWA, Accessibility, Error handling
+%c
+%cPress ⌘+D to toggle dark mode
+%c
+%cGitHub: https://github.com/ChrisMahlke
+%cLinkedIn: https://www.linkedin.com/in/chris-mahlke
+      `, 
+        'color: #3b82f6; font-size: 18px; font-weight: bold;',
+        '',
+        'color: #6b7280; font-size: 14px;',
+        'color: #6b7280; font-size: 14px;',
+        '',
+        'color: #10b981; font-size: 14px;',
+        '',
+        'color: #6b7280; font-size: 12px;',
+        'color: #6b7280; font-size: 12px;'
+      );
+    }
+  }, []);
+
   // Simulate loading state for better UX
   React.useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100);

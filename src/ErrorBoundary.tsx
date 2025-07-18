@@ -23,25 +23,17 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    // Log error to console in development
+    // Store error info for potential analytics service integration
+    // In a real app, you'd send this to your error tracking service
+    // Example: Sentry.captureException(error, { extra: errorInfo });
+    
+    // Only log in development for debugging
     const isDevelopment = import.meta.env.DEV;
     if (isDevelopment) {
       console.group('🚨 React Error Boundary Caught Error');
       console.error('Error:', error);
       console.error('Error Info:', errorInfo);
       console.groupEnd();
-    }
-
-    // Log to analytics service in production
-    if (!isDevelopment) {
-      console.error('Application Error:', {
-        message: error.message,
-        stack: error.stack,
-        componentStack: errorInfo.componentStack,
-        timestamp: new Date().toISOString(),
-        userAgent: navigator.userAgent,
-        url: window.location.href
-      });
     }
 
     this.setState({ error, errorInfo });

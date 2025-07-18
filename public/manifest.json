@@ -1,0 +1,16 @@
+{
+  "name": "Chris Mahlke - Software Engineer",
+  "short_name": "Chris Mahlke",
+  "description": "Personal homepage of Chris Mahlke, Software Engineer & Developer",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+} 

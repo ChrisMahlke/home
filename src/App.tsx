@@ -7,7 +7,7 @@ function App(): React.JSX.Element {
   const { strings, loading, error } = useCloudStrings();
 
   // All hooks at the top - must be called unconditionally
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
+  const [isDarkMode, setIsDarkMode] = React.useState(true); // Changed to true for dark mode default
   const [isLoaded, setIsLoaded] = React.useState<boolean>(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const mainContentRef = React.useRef<HTMLElement>(null);

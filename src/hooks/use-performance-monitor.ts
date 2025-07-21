@@ -99,7 +99,7 @@ export const usePerformanceMonitor = (): PerformanceMetrics | null => {
             // Log detailed performance metrics in development
             if (import.meta.env.DEV) {
               // eslint-disable-next-line no-console
-              console.log('%c📊 Performance Metrics:', 'color: #f59e0b; font-weight: bold;', newMetrics);
+              console.log(`%c📊 Performance Metrics:`, 'color: #f59e0b; font-weight: bold;', newMetrics);
             }
           }
         }

@@ -98,24 +98,58 @@ npm run dev
 
 ## 🎨 Customization
 
+### String Management
+All text strings in the application are centralized in `src/strings.json` for easy maintenance and internationalization. The strings are organized into logical categories:
+
+- **App**: Application name, title, and basic info
+- **UI**: User interface text and labels
+- **Social**: Social media links and descriptions
+- **Error**: Error messages and fallback text
+- **Console**: Developer console messages
+- **Analytics**: Event tracking names
+- **Performance**: Performance monitoring labels
+- **HTML/Meta**: SEO and meta tag content
+
+### Updating Strings
+To modify any text in the application:
+
+1. **Edit `src/strings.json`** - Update the relevant string value
+2. **Run generation scripts** - The build process automatically regenerates HTML and manifest files
+3. **TypeScript safety** - All strings are type-checked via `src/types/strings.ts`
+
 ### Personal Information
-Update the following in `src/App.tsx`:
-- Name and title in the hero section
-- Bio description
-- Social media links and URLs in the `socialLinks` array
-- Email address
+Update the following in `src/strings.json`:
+- **App section**: Name, title, and description
+- **Social section**: GitHub, LinkedIn, and other social media URLs
+- **Meta section**: Open Graph and Twitter Card content
+- **Manifest section**: PWA manifest information
 
 ### Adding Social Links
-To add more social links, add them to the `socialLinks` array in `src/App.tsx`:
+To add more social links:
 
-```typescript
+1. **Add to `src/strings.json`** in the `social` section:
+```json
 {
-  name: 'Your Platform',
-  url: 'https://your-url.com',
-  icon: YourIcon,
-  color: 'hover:text-your-color'
+  "social": {
+    "yourplatform": {
+      "name": "Your Platform",
+      "url": "https://your-url.com",
+      "color": "hover:text-your-color",
+      "ariaLabel": "Visit Your Platform (opens in new window)"
+    }
+  }
 }
 ```
+
+2. **Update `src/App.tsx`** to include the new link in the `socialLinks` array
+3. **Update `src/types/strings.ts`** to include the new social platform type
+
+### Generation Scripts
+The project includes automated scripts to generate files from strings:
+
+- `npm run generate-html` - Regenerates `index.html` from strings
+- `npm run generate-manifest` - Regenerates `manifest.json` from strings
+- `npm run build` - Runs both scripts before building
 
 ### Styling
 The app uses Tailwind CSS for styling. You can:

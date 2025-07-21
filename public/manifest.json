@@ -1,7 +1,7 @@
 {
-  "name": "Chris Mahlke - Software Engineer",
+  "name": "Chris Mahlke",
   "short_name": "Chris Mahlke",
-  "description": "Personal homepage of Chris Mahlke, Software Engineer & Developer",
+  "description": "Personal homepage of Chris Mahlke, Application Developer",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -13,4 +13,4 @@
       "type": "image/svg+xml"
     }
   ]
-} 
+}

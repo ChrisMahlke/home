@@ -1,0 +1,148 @@
+{
+  "app": {
+    "name": "Chris Mahlke",
+    "shortName": "Chris Mahlke",
+    "description": "Application Developer. Building digital experiences with modern technologies.",
+    "title": "Chris Mahlke",
+    "role": "application",
+    "ariaLabel": "Personal homepage application"
+  },
+  "navigation": {
+    "socialLinks": "Social media links",
+    "mainContent": "main-content"
+  },
+  "ui": {
+    "loading": "Loading...",
+    "loadingStatus": "polite",
+    "personalHomepage": "Personal homepage",
+    "banner": "banner",
+    "main": "main",
+    "contentInfo": "contentinfo"
+  },
+  "theme": {
+    "toggle": {
+      "title": "Toggle dark mode (⌘+D)",
+      "switchToLight": "Switch to light mode",
+      "switchToDark": "Switch to dark mode",
+      "keyboardShortcut": "Press ⌘+D to toggle theme"
+    }
+  },
+  "social": {
+    "github": {
+      "name": "GitHub",
+      "url": "https://github.com/ChrisMahlke",
+      "color": "hover:text-gray-900 dark:hover:text-gray-100",
+      "ariaLabel": "Visit GitHub (opens in new window)"
+    },
+    "linkedin": {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/chris-mahlke",
+      "color": "hover:text-blue-600 dark:hover:text-blue-400",
+      "ariaLabel": "Visit LinkedIn (opens in new window)"
+    }
+  },
+  "footer": {
+    "builtWith": "Built with React, TypeScript & Tailwind"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "message": "We're sorry, but something unexpected happened. Please try refreshing the page.",
+    "detailsTitle": "Error Details (Development)",
+    "tryAgain": "Try Again",
+    "refreshPage": "Refresh Page",
+    "icon": "⚠️"
+  },
+  "console": {
+    "welcome": "🚀 Welcome to Chris Mahlke's Portfolio!",
+    "builtWith": "Built with React, TypeScript & Tailwind CSS",
+    "features": "Features: Dark mode, PWA, Accessibility, Error handling",
+    "keyboardShortcut": "Press ⌘+D to toggle dark mode",
+    "github": "GitHub: https://github.com/ChrisMahlke",
+    "linkedin": "LinkedIn: https://www.linkedin.com/in/chris-mahlke",
+    "errorBoundary": "🚨 React Error Boundary Caught Error",
+    "error": "Error:",
+    "errorInfo": "Error Info:"
+  },
+  "analytics": {
+    "pageView": "page_view",
+    "darkModeEnabled": "dark_mode_enabled"
+  },
+  "performance": {
+    "pageLoadTime": "Page load time:",
+    "metrics": "📊 Performance Metrics:"
+  },
+  "serviceWorker": {
+    "registered": "SW registered:",
+    "failed": "SW registration failed:"
+  },
+  "localStorage": {
+    "darkMode": "darkMode"
+  },
+  "mediaQueries": {
+    "reducedMotion": "(prefers-reduced-motion: reduce)",
+    "colorScheme": "(prefers-color-scheme: dark)"
+  },
+  "performanceEntryTypes": {
+    "navigation": "navigation"
+  },
+  "keyboard": {
+    "keyD": "d",
+    "metaKey": "metaKey",
+    "ctrlKey": "ctrlKey"
+  },
+  "html": {
+    "lang": "en",
+    "dir": "ltr",
+    "charset": "UTF-8",
+    "viewport": "width=device-width, initial-scale=1.0",
+    "keywords": "software engineer, developer, react, typescript, web development",
+    "author": "Chris Mahlke",
+    "themeColor": "#3b82f6",
+    "appleMobileWebAppCapable": "yes",
+    "appleMobileWebAppStatusBarStyle": "default",
+    "appleMobileWebAppTitle": "Chris Mahlke",
+    "xContentTypeOptions": "nosniff",
+    "referrerPolicy": "strict-origin-when-cross-origin"
+  },
+  "meta": {
+    "og": {
+      "type": "website",
+      "url": "https://chrismahlke.com/",
+      "title": "Chris Mahlke",
+      "description": "Application Developer. Building digital experiences with modern technologies.",
+      "image": "/favicon.svg"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "url": "https://chrismahlke.com/",
+      "title": "Chris Mahlke",
+      "description": "Application Developer. Building digital experiences with modern technologies.",
+      "image": "/favicon.svg"
+    }
+  },
+  "manifest": {
+    "name": "Chris Mahlke",
+    "shortName": "Chris Mahlke",
+    "description": "Personal homepage of Chris Mahlke, Application Developer",
+    "startUrl": "/",
+    "display": "standalone",
+    "backgroundColor": "#ffffff",
+    "themeColor": "#3b82f6"
+  },
+  "icons": {
+    "favicon": "/favicon.svg",
+    "manifest": "/manifest.json",
+    "sizes": "any",
+    "type": "image/svg+xml"
+  },
+  "scripts": {
+    "main": "/src/main.tsx",
+    "serviceWorker": "/sw.js"
+  },
+  "elements": {
+    "root": "#root"
+  },
+  "errors": {
+    "rootNotFound": "Root element not found"
+  }
+} 

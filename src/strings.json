@@ -42,7 +42,7 @@
     }
   },
   "footer": {
-    "builtWith": "Built with React, TypeScript & Tailwind"
+    "builtWith": ""
   },
   "error": {
     "title": "Something went wrong",
@@ -54,7 +54,7 @@
   },
   "console": {
     "welcome": "🚀 Welcome to Chris Mahlke's Portfolio!",
-    "builtWith": "Built with React, TypeScript & Tailwind CSS",
+    "builtWith": "",
     "features": "Features: Dark mode, PWA, Accessibility, Error handling",
     "keyboardShortcut": "Press ⌘+D to toggle dark mode",
     "github": "GitHub: https://github.com/ChrisMahlke",

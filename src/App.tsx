@@ -30,26 +30,28 @@ function App(): React.JSX.Element {
   ], []);
 
   // Memoized theme classes to prevent recalculation
-  const themeClasses = React.useMemo(() => ({
-    container: `min-h-screen transition-colors duration-300 ${
-      isDarkMode 
-        ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white' 
-        : 'bg-gradient-to-br from-white via-gray-50 to-white text-gray-900'
-    }`,
-    button: `p-2 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-      isDarkMode 
-        ? 'bg-gray-800 text-yellow-400 hover:bg-gray-700' 
-        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-    }`,
-    link: (isDark: boolean): string => `flex items-center gap-2 transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-md px-2 py-1 ${
-      isDark 
-        ? 'text-gray-300 hover:text-white' 
-        : 'text-gray-700 hover:text-gray-900'
-    }`,
-    footer: `mt-12 text-sm transition-colors duration-300 ${
-      isDarkMode ? 'text-gray-500' : 'text-gray-400'
-    }`
-  }), [isDarkMode]);
+  const themeClasses = React.useMemo(() => {
+    return {
+      container: `min-h-screen transition-colors duration-300 ${
+        isDarkMode 
+          ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white' 
+          : 'bg-gradient-to-br from-white via-gray-50 to-white text-gray-900'
+      }`,
+      button: `p-3 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 min-w-[44px] min-h-[44px] flex items-center justify-center touch-manipulation shadow-lg ${
+        isDarkMode 
+          ? 'bg-gray-800/90 text-yellow-400 hover:bg-gray-700 active:bg-gray-600 backdrop-blur-sm' 
+          : 'bg-white/90 text-gray-600 hover:bg-gray-100 active:bg-gray-200 backdrop-blur-sm'
+      }`,
+      link: (isDark: boolean): string => `flex items-center gap-2 transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-md px-2 py-1 ${
+        isDark 
+          ? 'text-gray-300 hover:text-white' 
+          : 'text-gray-700 hover:text-gray-900'
+      }`,
+      footer: `mt-12 text-sm transition-colors duration-300 ${
+        isDarkMode ? 'text-gray-500' : 'text-gray-400'
+      }`
+    };
+  }, [isDarkMode]);
 
   // Memoized toggle function to prevent unnecessary re-renders
   const toggleDarkMode = React.useCallback((): void => {
@@ -138,13 +140,22 @@ function App(): React.JSX.Element {
         aria-label={typedStrings.ui.personalHomepage}
       >
         {/* Header with dark mode toggle */}
-        <header className="absolute top-0 right-0 p-6" role={typedStrings.ui.banner}>
+        <header className="fixed top-0 right-0 p-4 z-50" role={typedStrings.ui.banner}>
           <button
             onClick={toggleDarkMode}
-            className={themeClasses.button}
+            className={`${themeClasses.button} touch-manipulation`}
             aria-label={`Switch to ${isDarkMode ? typedStrings.theme.toggle.switchToLight : typedStrings.theme.toggle.switchToDark} mode`}
             title={typedStrings.theme.toggle.title}
             aria-pressed={isDarkMode}
+            style={{ 
+              WebkitTapHighlightColor: 'transparent',
+              WebkitTouchCallout: 'none',
+              WebkitUserSelect: 'none',
+              userSelect: 'none',
+              touchAction: 'manipulation',
+              minWidth: '44px',
+              minHeight: '44px'
+            }}
           >
             {isDarkMode ? <Sun className="w-5 h-5" aria-hidden="true" /> : <Moon className="w-5 h-5" aria-hidden="true" />}
           </button>
@@ -153,7 +164,7 @@ function App(): React.JSX.Element {
         <main 
           id={typedStrings.navigation.mainContent}
           ref={mainContentRef}
-          className="flex items-center justify-center min-h-screen p-8" 
+          className="flex items-center justify-center min-h-screen p-8 relative z-10" 
           role={typedStrings.ui.main}
           tabIndex={-1}
         >

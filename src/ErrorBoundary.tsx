@@ -32,19 +32,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     // In a real app, you'd send this to your error tracking service
     // Example: Sentry.captureException(error, { extra: errorInfo });
     
-    // Only log in development for debugging
-    const isDevelopment = import.meta.env.DEV;
-    if (isDevelopment) {
-      // eslint-disable-next-line no-console
-      console.group(typedStrings.console.errorBoundary);
-      // eslint-disable-next-line no-console
-      console.error(typedStrings.console.error, error);
-      // eslint-disable-next-line no-console
-      console.error(typedStrings.console.errorInfo, errorInfo);
-      // eslint-disable-next-line no-console
-      console.groupEnd();
-    }
-
+    // Error logging removed - in production, send to error tracking service
     this.setState({ error, errorInfo });
   }
 

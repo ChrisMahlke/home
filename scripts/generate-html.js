@@ -1,15 +1,34 @@
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 
 // Read the strings.json file
-const stringsPath = path.join(process.cwd(), 'src', 'strings.json');
-const strings = JSON.parse(fs.readFileSync(stringsPath, 'utf8'));
+const stringsPath = path.join(process.cwd(), "src", "strings.json");
+const strings = JSON.parse(fs.readFileSync(stringsPath, "utf8"));
 
 // Generate HTML content
 const htmlContent = `<!doctype html>
 <html lang="${strings.html.lang}" dir="${strings.html.dir}">
   <head>
     <meta charset="${strings.html.charset}" />
+    <!-- Prevent flash of light mode - must be first script -->
+    <script>
+      (function() {
+        try {
+          const darkMode = localStorage.getItem('darkMode');
+          const isDark = darkMode === null ? true : JSON.parse(darkMode);
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.style.backgroundColor = '#111827';
+          } else {
+            document.documentElement.style.backgroundColor = '#ffffff';
+          }
+        } catch (e) {
+          // Default to dark mode on error
+          document.documentElement.classList.add('dark');
+          document.documentElement.style.backgroundColor = '#111827';
+        }
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="${strings.icons.favicon}" />
     <link rel="manifest" href="${strings.icons.manifest}" />
     <meta name="viewport" content="${strings.html.viewport}" />
@@ -46,7 +65,7 @@ const htmlContent = `<!doctype html>
 </html>`;
 
 // Write the index.html file
-const htmlPath = path.join(process.cwd(), 'index.html');
+const htmlPath = path.join(process.cwd(), "index.html");
 fs.writeFileSync(htmlPath, htmlContent);
 
-console.log('✅ index.html generated from strings.json'); 
+console.log("✅ index.html generated from strings.json");

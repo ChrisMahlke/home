@@ -55,9 +55,7 @@ function App(): React.JSX.Element {
       }`,
       link: (isDark: boolean): string =>
         `flex items-center gap-2 transition-all duration-200 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-md px-2 py-1 ${
-          isDark
-            ? "text-gray-300 hover:text-white"
-            : "text-gray-700 hover:text-gray-900"
+          isDark ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900"
         }`,
       footer: `mt-12 text-sm transition-colors duration-300 ${
         isDarkMode ? "text-gray-500" : "text-gray-400"
@@ -76,9 +74,7 @@ function App(): React.JSX.Element {
       if ("performance" in window) {
         const observer = new PerformanceObserver((list) => {
           for (const entry of list.getEntries()) {
-            if (
-              entry.entryType === typedStrings.performanceEntryTypes.navigation
-            ) {
+            if (entry.entryType === typedStrings.performanceEntryTypes.navigation) {
               // Performance tracking - removed console.log
             }
           }
@@ -93,10 +89,7 @@ function App(): React.JSX.Element {
   const useKeyboardNavigation = (onToggle: () => void): void => {
     React.useEffect(() => {
       const handleKeyPress = (event: KeyboardEvent): void => {
-        if (
-          event.key === typedStrings.keyboard.keyD &&
-          (event.metaKey || event.ctrlKey)
-        ) {
+        if (event.key === typedStrings.keyboard.keyD && (event.metaKey || event.ctrlKey)) {
           event.preventDefault();
           onToggle();
         }
@@ -107,12 +100,9 @@ function App(): React.JSX.Element {
   };
 
   const useReducedMotion = (): boolean => {
-    const [prefersReducedMotion, setPrefersReducedMotion] =
-      React.useState(false);
+    const [prefersReducedMotion, setPrefersReducedMotion] = React.useState(false);
     React.useEffect((): (() => void) => {
-      const mediaQuery = window.matchMedia(
-        typedStrings.mediaQueries.reducedMotion
-      );
+      const mediaQuery = window.matchMedia(typedStrings.mediaQueries.reducedMotion);
       setPrefersReducedMotion(mediaQuery.matches);
       const handleChange = (e: MediaQueryListEvent): void => {
         setPrefersReducedMotion(e.matches);
@@ -131,10 +121,7 @@ function App(): React.JSX.Element {
   // All useEffect hooks must be at the top level
   // Sync dark mode with HTML element and localStorage
   React.useEffect((): void => {
-    localStorage.setItem(
-      typedStrings.localStorage.darkMode,
-      JSON.stringify(isDarkMode)
-    );
+    localStorage.setItem(typedStrings.localStorage.darkMode, JSON.stringify(isDarkMode));
 
     // Update HTML element class and background color
     if (isDarkMode) {
@@ -164,9 +151,7 @@ function App(): React.JSX.Element {
         <div
           className="animate-pulse"
           role="status"
-          aria-live={
-            typedStrings.ui.loadingStatus as "polite" | "off" | "assertive"
-          }
+          aria-live={typedStrings.ui.loadingStatus as "polite" | "off" | "assertive"}
         >
           {typedStrings.ui.loading}
         </div>
@@ -186,10 +171,7 @@ function App(): React.JSX.Element {
       aria-label={typedStrings.ui.personalHomepage}
     >
       {/* Header with dark mode toggle */}
-      <header
-        className="fixed top-0 right-0 p-4 z-50"
-        role={typedStrings.ui.banner}
-      >
+      <header className="fixed top-0 right-0 p-4 z-50" role={typedStrings.ui.banner}>
         <button
           onClick={toggleDarkMode}
           className={`${themeClasses.button} touch-manipulation`}
@@ -247,9 +229,7 @@ function App(): React.JSX.Element {
                       : typedStrings.social.linkedin.ariaLabel
                   }
                   style={{
-                    animationDelay: prefersReducedMotion
-                      ? "0ms"
-                      : `${index * 100}ms`,
+                    animationDelay: prefersReducedMotion ? "0ms" : `${index * 100}ms`,
                     animation: prefersReducedMotion ? "none" : undefined,
                   }}
                 >
@@ -265,14 +245,9 @@ function App(): React.JSX.Element {
           </nav>
 
           {/* Footer */}
-          <footer
-            className={themeClasses.footer}
-            role={typedStrings.ui.contentInfo}
-          >
+          <footer className={themeClasses.footer} role={typedStrings.ui.contentInfo}>
             <p>{typedStrings.footer.builtWith}</p>
-            <p className="mt-1 text-xs opacity-60">
-              {typedStrings.theme.toggle.keyboardShortcut}
-            </p>
+            <p className="mt-1 text-xs opacity-60">{typedStrings.theme.toggle.keyboardShortcut}</p>
           </footer>
         </div>
       </main>

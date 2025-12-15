@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 // Network Information API types
 interface NetworkInformation {
@@ -34,7 +34,7 @@ export const useNetworkStatus = (): NetworkStatus => {
   useEffect((): (() => void) => {
     const updateNetworkStatus = (): void => {
       const connection = (navigator as Navigator & { connection?: NetworkInformation }).connection;
-      
+
       setNetworkStatus({
         isOnline: navigator.onLine,
         connectionType: connection?.type,
@@ -48,20 +48,20 @@ export const useNetworkStatus = (): NetworkStatus => {
     updateNetworkStatus();
 
     // Listen for online/offline events
-    window.addEventListener('online', updateNetworkStatus);
-    window.addEventListener('offline', updateNetworkStatus);
+    window.addEventListener("online", updateNetworkStatus);
+    window.addEventListener("offline", updateNetworkStatus);
 
     // Listen for connection changes (if supported)
     const connection = (navigator as Navigator & { connection?: NetworkInformation }).connection;
     if (connection) {
-      connection.addEventListener('change', updateNetworkStatus);
+      connection.addEventListener("change", updateNetworkStatus);
     }
 
     return () => {
-      window.removeEventListener('online', updateNetworkStatus);
-      window.removeEventListener('offline', updateNetworkStatus);
+      window.removeEventListener("online", updateNetworkStatus);
+      window.removeEventListener("offline", updateNetworkStatus);
       if (connection) {
-        connection.removeEventListener('change', updateNetworkStatus);
+        connection.removeEventListener("change", updateNetworkStatus);
       }
     };
   }, []);
@@ -73,43 +73,46 @@ export const usePerformanceMonitor = (): PerformanceMetrics | null => {
   const [metrics, setMetrics] = useState<PerformanceMetrics | null>(null);
 
   useEffect((): (() => void) => {
-    if ('performance' in window) {
+    if ("performance" in window) {
       const observer = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
-          if (entry.entryType === 'navigation') {
+          if (entry.entryType === "navigation") {
             const navEntry = entry as PerformanceNavigationTiming;
-            const paintEntries = performance.getEntriesByType('paint');
-            
-            const firstPaint = paintEntries.find(paintEntry => paintEntry.name === 'first-paint');
-            const firstContentfulPaint = paintEntries.find(paintEntry => paintEntry.name === 'first-contentful-paint');
-            
-            const lcpEntries = performance.getEntriesByType('largest-contentful-paint');
+            const paintEntries = performance.getEntriesByType("paint");
+
+            const firstPaint = paintEntries.find((paintEntry) => paintEntry.name === "first-paint");
+            const firstContentfulPaint = paintEntries.find(
+              (paintEntry) => paintEntry.name === "first-contentful-paint"
+            );
+
+            const lcpEntries = performance.getEntriesByType("largest-contentful-paint");
             const lcp = lcpEntries[lcpEntries.length - 1];
-            
+
             const newMetrics = {
               loadTime: navEntry.loadEventEnd - navEntry.loadEventStart,
-              domContentLoaded: navEntry.domContentLoadedEventEnd - navEntry.domContentLoadedEventStart,
+              domContentLoaded:
+                navEntry.domContentLoadedEventEnd - navEntry.domContentLoadedEventStart,
               firstPaint: firstPaint ? firstPaint.startTime : 0,
               firstContentfulPaint: firstContentfulPaint ? firstContentfulPaint.startTime : 0,
               largestContentfulPaint: lcp ? lcp.startTime : 0,
             };
-            
+
             setMetrics(newMetrics);
-            
+
             // Performance metrics tracking removed - in production, send to analytics service
           }
         }
       });
-      
-      observer.observe({ entryTypes: ['navigation', 'paint', 'largest-contentful-paint'] });
-      
+
+      observer.observe({ entryTypes: ["navigation", "paint", "largest-contentful-paint"] });
+
       return () => observer.disconnect();
     }
-    
+
     return () => {
       // No cleanup needed if performance API is not available
     };
   }, []);
 
   return metrics;
-}; 
+};

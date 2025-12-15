@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 // Network Information API types
 interface NetworkInformation {
@@ -26,7 +26,7 @@ export const useNetworkStatus = (): NetworkStatus => {
   useEffect((): (() => void) => {
     const updateNetworkStatus = (): void => {
       const connection = (navigator as Navigator & { connection?: NetworkInformation }).connection;
-      
+
       setNetworkStatus({
         isOnline: navigator.onLine,
         connectionType: connection?.type,
@@ -40,23 +40,23 @@ export const useNetworkStatus = (): NetworkStatus => {
     updateNetworkStatus();
 
     // Listen for online/offline events
-    window.addEventListener('online', updateNetworkStatus);
-    window.addEventListener('offline', updateNetworkStatus);
+    window.addEventListener("online", updateNetworkStatus);
+    window.addEventListener("offline", updateNetworkStatus);
 
     // Listen for connection changes (if supported)
     const connection = (navigator as Navigator & { connection?: NetworkInformation }).connection;
     if (connection) {
-      connection.addEventListener('change', updateNetworkStatus);
+      connection.addEventListener("change", updateNetworkStatus);
     }
 
     return () => {
-      window.removeEventListener('online', updateNetworkStatus);
-      window.removeEventListener('offline', updateNetworkStatus);
+      window.removeEventListener("online", updateNetworkStatus);
+      window.removeEventListener("offline", updateNetworkStatus);
       if (connection) {
-        connection.removeEventListener('change', updateNetworkStatus);
+        connection.removeEventListener("change", updateNetworkStatus);
       }
     };
   }, []);
 
   return networkStatus;
-}; 
+};

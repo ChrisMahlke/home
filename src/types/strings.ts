@@ -145,4 +145,4 @@ export interface Strings {
   errors: {
     rootNotFound: string;
   };
-} 
+}

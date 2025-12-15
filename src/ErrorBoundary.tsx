@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import strings from './strings.json';
-import type { Strings } from './types/strings';
+import strings from "./strings.json";
+import type { Strings } from "./types/strings";
 
 const typedStrings: Strings = strings;
 
@@ -31,7 +31,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     // Store error info for potential analytics service integration
     // In a real app, you'd send this to your error tracking service
     // Example: Sentry.captureException(error, { extra: errorInfo });
-    
+
     // Error logging removed - in production, send to error tracking service
     this.setState({ error, errorInfo });
   }
@@ -57,10 +57,8 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                 {typedStrings.error.title}
               </h1>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
-                {typedStrings.error.message}
-              </p>
-              
+              <p className="text-gray-600 dark:text-gray-300 mb-6">{typedStrings.error.message}</p>
+
               {import.meta.env.DEV && this.state.error && (
                 <details className="text-left mb-4 p-4 bg-gray-100 dark:bg-gray-700 rounded text-sm">
                   <summary className="cursor-pointer font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -68,12 +66,12 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
                   </summary>
                   <pre className="text-red-600 dark:text-red-400 overflow-auto">
                     {this.state.error.message}
-                    {'\n'}
+                    {"\n"}
                     {this.state.error.stack}
                   </pre>
                 </details>
               )}
-              
+
               <div className="flex gap-3 justify-center">
                 <button
                   onClick={this.resetError}
@@ -98,4 +96,4 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   }
 }
 
-export default ErrorBoundary; 
+export default ErrorBoundary;

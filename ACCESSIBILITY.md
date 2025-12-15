@@ -7,20 +7,24 @@ This document outlines the accessibility features implemented to achieve WCAG AA
 ### **Perceivable**
 
 #### **1.1 Text Alternatives**
+
 - ✅ **Alt text for images**: All icons have `aria-hidden="true"` since they're decorative
 - ✅ **Descriptive labels**: All interactive elements have descriptive `aria-label` attributes
 - ✅ **Screen reader support**: Proper semantic HTML structure
 
 #### **1.2 Time-based Media**
+
 - ✅ **No auto-playing media**: No audio or video content
 - ✅ **User control**: All animations respect `prefers-reduced-motion`
 
 #### **1.3 Adaptable**
+
 - ✅ **Semantic HTML**: Proper use of `<main>`, `<nav>`, `<header>`, `<footer>`
 - ✅ **Logical structure**: Clear heading hierarchy and content organization
 - ✅ **Responsive design**: Adapts to different screen sizes
 
 #### **1.4 Distinguishable**
+
 - ✅ **Color contrast**: All text meets AAA contrast ratios (7:1 for normal text, 4.5:1 for large text)
 - ✅ **Color independence**: Information not conveyed by color alone
 - ✅ **Focus indicators**: High contrast focus rings on all interactive elements
@@ -29,21 +33,25 @@ This document outlines the accessibility features implemented to achieve WCAG AA
 ### **Operable**
 
 #### **2.1 Keyboard Accessible**
+
 - ✅ **Keyboard navigation**: All interactive elements accessible via keyboard
 - ✅ **No keyboard traps**: Focus can be moved away from all elements
 - ✅ **Custom keyboard shortcuts**: ⌘+D for theme toggle
 - ✅ **Skip links**: "Skip to main content" link for screen readers
 
 #### **2.2 Enough Time**
+
 - ✅ **No time limits**: No content with time restrictions
 - ✅ **Pause/stop/hide**: Animations respect user preferences
 - ✅ **No auto-refresh**: No automatic page refreshes
 
 #### **2.3 Seizures and Physical Reactions**
+
 - ✅ **No flashing content**: No content that flashes more than 3 times per second
 - ✅ **Reduced motion support**: Respects `prefers-reduced-motion` media query
 
 #### **2.4 Navigable**
+
 - ✅ **Page title**: Descriptive and unique page title
 - ✅ **Focus order**: Logical tab order through page elements
 - ✅ **Link purpose**: Clear link text and descriptions
@@ -53,17 +61,20 @@ This document outlines the accessibility features implemented to achieve WCAG AA
 ### **Understandable**
 
 #### **3.1 Readable**
+
 - ✅ **Language identification**: Proper `lang` attribute on HTML element
 - ✅ **Unusual words**: No unusual words or phrases used
 - ✅ **Abbreviations**: No abbreviations that need explanation
 - ✅ **Reading level**: Content written at appropriate reading level
 
 #### **3.2 Predictable**
+
 - ✅ **Consistent navigation**: Navigation structure remains consistent
 - ✅ **Consistent identification**: Elements with same functionality identified consistently
 - ✅ **No context changes**: No automatic context changes on user input
 
 #### **3.3 Input Assistance**
+
 - ✅ **Error identification**: Clear error messages and identification
 - ✅ **Labels and instructions**: Clear labels for all form elements
 - ✅ **Error prevention**: No critical errors that can't be corrected
@@ -71,6 +82,7 @@ This document outlines the accessibility features implemented to achieve WCAG AA
 ### **Robust**
 
 #### **4.1 Compatible**
+
 - ✅ **Valid HTML**: Proper HTML structure and syntax
 - ✅ **ARIA attributes**: Proper use of ARIA roles and attributes
 - ✅ **Screen reader compatibility**: Tested with screen readers
@@ -79,14 +91,19 @@ This document outlines the accessibility features implemented to achieve WCAG AA
 ## 🔧 **Accessibility Features Implemented**
 
 ### **Semantic HTML Structure**
+
 ```html
 <main role="main" id="main-content">
   <nav role="navigation" aria-label="Social media links">
-  <header role="banner">
-  <footer role="contentinfo">
+    <header role="banner">
+      <footer role="contentinfo"></footer>
+    </header>
+  </nav>
+</main>
 ```
 
 ### **ARIA Attributes**
+
 - `aria-label` for descriptive labels
 - `aria-hidden="true"` for decorative icons
 - `aria-pressed` for toggle button state
@@ -94,15 +111,19 @@ This document outlines the accessibility features implemented to achieve WCAG AA
 - `role` attributes for semantic meaning
 
 ### **Focus Management**
+
 - High contrast focus indicators
 - Logical tab order
 - Skip links for screen readers
 - Keyboard shortcuts for power users
 
 ### **Reduced Motion Support**
+
 ```css
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
@@ -110,6 +131,7 @@ This document outlines the accessibility features implemented to achieve WCAG AA
 ```
 
 ### **High Contrast Support**
+
 ```css
 @media (prefers-contrast: high) {
   .focus-visible {
@@ -121,11 +143,13 @@ This document outlines the accessibility features implemented to achieve WCAG AA
 ## 🎯 **Color Contrast Ratios**
 
 ### **Light Mode**
+
 - Primary text: 15.6:1 (AAA compliant)
 - Secondary text: 8.2:1 (AAA compliant)
 - Links: 7.8:1 (AAA compliant)
 
 ### **Dark Mode**
+
 - Primary text: 15.6:1 (AAA compliant)
 - Secondary text: 8.2:1 (AAA compliant)
 - Links: 7.8:1 (AAA compliant)
@@ -133,17 +157,20 @@ This document outlines the accessibility features implemented to achieve WCAG AA
 ## 🧪 **Testing Recommendations**
 
 ### **Automated Testing**
+
 - Use axe-core for automated accessibility testing
 - Lighthouse accessibility audit
 - WAVE Web Accessibility Evaluator
 
 ### **Manual Testing**
+
 - Keyboard navigation testing
 - Screen reader testing (NVDA, JAWS, VoiceOver)
 - High contrast mode testing
 - Zoom testing (200% zoom)
 
 ### **User Testing**
+
 - Test with users who have disabilities
 - Test with assistive technologies
 - Test with different browsers and devices
@@ -215,4 +242,4 @@ This website meets **WCAG AAA compliance** standards with comprehensive accessib
 - **Color contrast compliance**
 - **Clean minimal interface** - Distraction-free design while maintaining accessibility
 
-The site provides an excellent user experience for all users, including those with disabilities, while maintaining the clean, minimal aesthetic requested. 
+The site provides an excellent user experience for all users, including those with disabilities, while maintaining the clean, minimal aesthetic requested.

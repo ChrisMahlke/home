@@ -13,6 +13,7 @@ A modern, responsive personal homepage built with React, TypeScript, and Tailwin
 ## ✨ Features
 
 ### 🎨 **User Experience**
+
 - **Dark/Light Mode Toggle** - Switch between themes with smooth transitions
 - **Keyboard Shortcuts** - Press `⌘+D` to toggle dark mode
 - **Responsive Design** - Looks great on all devices
@@ -22,6 +23,7 @@ A modern, responsive personal homepage built with React, TypeScript, and Tailwin
 - **Clean Minimal Design** - Focused, distraction-free interface
 
 ### ⚡ **Performance & Technical**
+
 - **Performance Monitoring** - Real-time page load time tracking with detailed metrics
 - **Network Status Monitoring** - Connection quality and type detection
 - **Enhanced Service Worker** - Advanced caching strategies with offline support
@@ -31,6 +33,7 @@ A modern, responsive personal homepage built with React, TypeScript, and Tailwin
 - **TypeScript Safety** - Full type coverage with proper interfaces
 
 ### 🛡️ **Security & Reliability**
+
 - **Comprehensive Error Handling** - Production-ready error boundaries with graceful recovery
 - **Security Headers** - XSS protection, clickjacking prevention, and content security policy
 - **Developer Console** - Professional welcome message with feature showcase
@@ -38,6 +41,7 @@ A modern, responsive personal homepage built with React, TypeScript, and Tailwin
 - **Graceful Degradation** - Fallback UI for error states with retry functionality
 
 ### 🔧 **Developer Experience**
+
 - **Hot Module Replacement** - Instant updates during development
 - **ESLint Configuration** - Clean code with strict linting
 - **Error Tracking Ready** - Prepared for production error monitoring
@@ -47,6 +51,7 @@ A modern, responsive personal homepage built with React, TypeScript, and Tailwin
 - **Performance Insights** - Detailed metrics logging in development mode
 
 ### 🌐 **SEO & Social**
+
 - **Open Graph Tags** - Optimized Facebook and LinkedIn sharing
 - **Twitter Cards** - Enhanced Twitter sharing experience
 - **Meta Tags** - Comprehensive SEO optimization
@@ -55,6 +60,7 @@ A modern, responsive personal homepage built with React, TypeScript, and Tailwin
 ## 🆕 Recent Enhancements
 
 ### Zero-UI Improvements
+
 - **Enhanced SEO** - Added Open Graph and Twitter Card meta tags for better social sharing
 - **Improved Service Worker** - Advanced caching strategies with separate static and dynamic caches
 - **Performance Monitoring** - Detailed metrics logging with network status tracking
@@ -72,17 +78,20 @@ All enhancements are **invisible to users** but provide significant technical im
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <your-repo-url>
 cd home
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -99,6 +108,7 @@ npm run dev
 ## 🎨 Customization
 
 ### String Management
+
 All text strings in the application are centralized in `src/strings.json` for easy maintenance and internationalization. The strings are organized into logical categories:
 
 - **App**: Application name, title, and basic info
@@ -111,6 +121,7 @@ All text strings in the application are centralized in `src/strings.json` for ea
 - **HTML/Meta**: SEO and meta tag content
 
 ### Updating Strings
+
 To modify any text in the application:
 
 1. **Edit `src/strings.json`** - Update the relevant string value
@@ -118,16 +129,20 @@ To modify any text in the application:
 3. **TypeScript safety** - All strings are type-checked via `src/types/strings.ts`
 
 ### Personal Information
+
 Update the following in `src/strings.json`:
+
 - **App section**: Name, title, and description
 - **Social section**: GitHub, LinkedIn, and other social media URLs
 - **Meta section**: Open Graph and Twitter Card content
 - **Manifest section**: PWA manifest information
 
 ### Adding Social Links
+
 To add more social links:
 
 1. **Add to `src/strings.json`** in the `social` section:
+
 ```json
 {
   "social": {
@@ -145,6 +160,7 @@ To add more social links:
 3. **Update `src/types/strings.ts`** to include the new social platform type
 
 ### Generation Scripts
+
 The project includes automated scripts to generate files from strings:
 
 - `npm run generate-html` - Regenerates `index.html` from strings
@@ -152,7 +168,9 @@ The project includes automated scripts to generate files from strings:
 - `npm run build` - Runs both scripts before building
 
 ### Styling
+
 The app uses Tailwind CSS for styling. You can:
+
 - Modify colors in the dark/light mode classes
 - Adjust spacing and typography
 - Add custom animations in `src/index.css`
@@ -160,12 +178,15 @@ The app uses Tailwind CSS for styling. You can:
 ## 🔧 Advanced Features
 
 ### Performance Monitoring
+
 The app includes real-time performance tracking:
+
 - Page load time measurement
 - Performance API integration
 - Console logging for development insights
 
 ### PWA Capabilities
+
 - **Enhanced Service Worker** - Advanced caching strategies with static and dynamic caches
 - **Web App Manifest** - Native app installation with proper metadata
 - **Apple Meta Tags** - iOS app-like experience
@@ -173,6 +194,7 @@ The app includes real-time performance tracking:
 - **Background Sync** - Future-ready offline capabilities
 
 ### Error Handling & Security
+
 - **Error Boundaries** - Catches and displays errors gracefully with professional fallback UI
 - **Security Headers** - Comprehensive protection against XSS, clickjacking, and injection attacks
 - **Error Logging** - Structured error reporting with context for production debugging
@@ -180,6 +202,7 @@ The app includes real-time performance tracking:
 - **Developer Console** - Professional welcome message with feature showcase
 
 ### Keyboard Navigation
+
 - **⌘+D** - Toggle dark/light mode
 - **Tab Navigation** - Full keyboard accessibility
 - **Focus Management** - Proper focus indicators
@@ -187,12 +210,14 @@ The app includes real-time performance tracking:
 ## 📦 Tech Stack
 
 ### Core Technologies
+
 - **React 18** - UI framework with latest features
 - **TypeScript** - Full type safety and IntelliSense
 - **Vite** - Lightning-fast build tool and dev server
 - **Tailwind CSS** - Utility-first styling framework
 
 ### Advanced Features
+
 - **Lucide React** - Beautiful, customizable icons
 - **ESLint** - Code quality and consistency
 - **Enhanced Service Workers** - Advanced offline capabilities with intelligent caching
@@ -201,12 +226,14 @@ The app includes real-time performance tracking:
 - **Intersection Observer** - Scroll-based animations
 
 ### Security & Reliability
+
 - **Error Boundaries** - Production-ready error handling
 - **Security Headers** - Comprehensive web security
 - **Content Security Policy** - XSS and injection protection
 - **Strict Transport Security** - HTTPS enforcement
 
 ### Development Tools
+
 - **Hot Module Replacement** - Instant development updates
 - **TypeScript Compiler** - Strict type checking
 - **PostCSS** - Advanced CSS processing
@@ -215,6 +242,7 @@ The app includes real-time performance tracking:
 ## 🚀 Deployment
 
 ### Build for Production
+
 ```bash
 npm run build
 ```
@@ -222,7 +250,9 @@ npm run build
 The build creates optimized files in the `dist/` directory ready for deployment.
 
 ### Security Headers
+
 The project includes comprehensive security headers in `public/_headers`:
+
 - **X-Frame-Options** - Prevents clickjacking
 - **X-Content-Type-Options** - Prevents MIME type sniffing
 - **Content-Security-Policy** - XSS and injection protection
@@ -230,6 +260,7 @@ The project includes comprehensive security headers in `public/_headers`:
 - **Permissions-Policy** - Restricts browser features
 
 ### Deploy Options
+
 - **Vercel** - Zero-config deployment with automatic security headers
 - **Netlify** - Drag and drop deployment with `_headers` support
 - **GitHub Pages** - Free hosting for public repos
@@ -244,6 +275,7 @@ This project is open source and available under the [MIT License](LICENSE).
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 ### Development Guidelines
+
 - Follow TypeScript best practices
 - Maintain ESLint compliance
 - Add proper error handling
@@ -253,6 +285,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 🔍 Technical Highlights
 
 This project demonstrates:
+
 - **Modern React Patterns** - Custom hooks, error boundaries, performance optimization
 - **Advanced Web APIs** - Service Workers, Performance API, Network API, Intersection Observer
 - **Production Readiness** - Error handling, analytics, monitoring, security, SEO
